@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ============================================================
+       META TAGS ESENCIALES - REEMPLAZAR POR NEGOCIO
+  ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- REEMPLAZAR AQUÍ: Title SEO del negocio -->
+  <title>Chifa San Martín Del Paisita | Cajamarca - Delivery y Pedidos por WhatsApp</title>
+
+  <!-- REEMPLAZAR AQUÍ: Description SEO -->
+  <meta name="description" content="Chifa San Martín Del Paisita en Cajamarca. Deliciosos platos de comida chifa: Arroz Chaufa, Tallarín Saltado, Combinados y más. Haz tu pedido por WhatsApp al 942 201 341. Delivery disponible en Cajamarca." />
+
+  <!-- SEO adicional -->
+  <meta name="keywords" content="chifa cajamarca, chifa san martin, comida china cajamarca, delivery cajamarca, arroz chaufa cajamarca, tallarín saltado" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Chifa San Martín Del Paisita" />
+
+  <!-- Open Graph (para compartir en redes sociales) -->
+  <!-- REEMPLAZAR AQUÍ: URL final de Vercel y imagen OG -->
+  <meta property="og:title" content="Chifa San Martín Del Paisita | Cajamarca" />
+  <meta property="og:description" content="El mejor chifa de Cajamarca. Delivery y pedidos por WhatsApp. ¡Pide ahora!" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:locale" content="es_PE" />
+
+  <!-- Fuentes de Google - Cinzel (display elegante) + Inter (cuerpo legible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIABLES CSS - SISTEMA DE TOKENS (EDITAR SOLO AQUÍ)
+       Para adaptar a otro restaurante, cambia solo estas variables
+    ============================================================ */
+    :root {
+      /* REEMPLAZAR AQUÍ: Colores de marca del negocio */
+      --color-bg-primary:    #0a0a0a;      /* Fondo principal oscuro */
+      --color-bg-secondary:  #111111;      /* Fondo secundario / tarjetas */
+      --color-bg-card:       #1a1410;      /* Fondo con tinte cálido para secciones */
+      --color-accent-main:   #c0392b;      /* Rojo oriental - color dominante */
+      --color-accent-gold:   #d4af37;      /* Dorado premium - detalles y bordes */
+      --color-accent-gold-lt:#f0d060;      /* Dorado claro para hovers */
+      --color-text-primary:  #f5f0e8;      /* Blanco crema - texto principal */
+      --color-text-secondary:#b8a898;      /* Gris cálido - texto secundario */
+      --color-whatsapp:      #25d366;      /* Verde WhatsApp oficial */
+      --color-whatsapp-dark: #128c7e;      /* Verde WhatsApp oscuro */
+
+      /* REEMPLAZAR AQUÍ: Tipografías del negocio */
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      /* Espaciados y bordes */
+      --radius-card:    16px;
+      --radius-btn:     50px;
+      --shadow-gold:    0 0 20px rgba(212, 175, 55, 0.3);
+      --shadow-red:     0 0 20px rgba(192, 57, 43, 0.4);
+      --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       RESET Y BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       LAYOUT CONTENEDOR
+    ============================================================ */
+    .page-wrapper {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: linear-gradient(
+        180deg,
+        #0a0a0a 0%,
+        #0f0a08 40%,
+        #0a0a0a 100%
+      );
+      position: relative;
+    }
+
+    /* ============================================================
+       DECORACIÓN DE FONDO - Patrón sutil oriental
+    ============================================================ */
+    .page-wrapper::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 480px;
+      height: 100vh;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(192,57,43,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212,175,55,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ============================================================
+       SEPARADOR ORNAMENTAL (firma única del diseño)
+    ============================================================ */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 24px;
+      margin: 8px 0;
+    }
+
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+      opacity: 0.5;
+    }
+
+    .ornament-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent-gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* ============================================================
+       BLOQUE 1 - CABECERA / PERFIL
+    ============================================================ */
+    .header {
+      position: relative;
+      z-index: 1;
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+
+    /* Logotipo circular con borde dorado animado */
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .logo-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-main), var(--color-accent-gold));
+      animation: rotateBorder 6s linear infinite;
+      /* REEMPLAZAR AQUÍ: Si hay logo real, mostrar imagen dentro */
+    }
+
+    @keyframes rotateBorder {
+      0%   { background: linear-gradient(0deg,   var(--color-accent-gold), var(--color-accent-main), var(--color-accent-gold)); }
+      50%  { background: linear-gradient(180deg, var(--color-accent-gold), var(--color-accent-main), var(--color-accent-gold)); }
+      100% { background: linear-gradient(360deg, var(--color-accent-gold), var(--color-accent-main), var(--color-accent-gold)); }
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid var(--color-bg-primary);
+    }
+
+    /* REEMPLAZAR AQUÍ: Si hay foto de logo real, reemplazar el emoji */
+    .logo-emoji {
+      font-size: 52px;
+      line-height: 1;
+    }
+
+    /* Si hay imagen real de logo: */
+    .logo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Badge "Abierto" */
+    .badge-open {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: var(--color-whatsapp);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 2px solid var(--color-bg-primary);
+      text-transform: uppercase;
+    }
+
+    /* Nombre del negocio */
+    .business-name {
+      font-family: var(--font-display);
+      /* REEMPLAZAR AQUÍ: Nombre del restaurante */
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .business-name .name-main {
+      display: block;
+      font-size: clamp(26px, 7vw, 32px);
+      font-weight: 900;
+      color: var(--color-text-primary);
+      letter-spacing: 1px;
+    }
+
+    .business-name .name-sub {
+      display: block;
+      font-size: clamp(14px, 4vw, 18px);
+      font-weight: 600;
+      color: var(--color-accent-gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      margin: 10px 0 20px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Dirección */
+    .address-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      color: var(--color-accent-gold);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .address-chip .pin {
+      font-size: 14px;
+    }
+
+    /* Horario */
+    .hours-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .hours-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .hours-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent-main);
+    }
+
+    /* ============================================================
+       BLOQUE 2 - CARRUSEL DE PLATOS
+    ============================================================ */
+    .section-label {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .slider-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 0 32px;
+    }
+
+    .slider-header {
+      padding: 0 24px 20px;
+      text-align: center;
+    }
+
+    .slider-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    /* Contenedor del carrusel */
+    .slider-track-wrapper {
+      position: relative;
+      overflow: hidden;
+      /* Bordes suaves en los lados */
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+      mask-image:         linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 16px;
+      padding: 8px 24px 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .slider-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider-track.is-dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    /* Tarjeta de plato */
+    .dish-card {
+      flex-shrink: 0;
+      width: 240px;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      scroll-snap-align: center;
+      position: relative;
+      background: var(--color-bg-secondary);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      transition: var(--transition);
+    }
+
+    .dish-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: var(--shadow-gold), 0 8px 32px rgba(0,0,0,0.6);
+    }
+
+    /* Imagen del plato */
+    .dish-img-wrapper {
+      width: 240px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dish-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .dish-card:hover .dish-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    /* Overlay degradado sobre la imagen */
+    .dish-img-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Nombre del plato (flotando sobre la imagen) */
+    .dish-name-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 12px 14px 14px;
+      z-index: 2;
+    }
+
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .dish-tag {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-accent-gold);
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      padding: 2px 8px;
+    }
+
+    /* Descripción del plato */
+    .dish-desc {
+      padding: 12px 14px 14px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Indicadores de navegación */
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding-top: 4px;
+    }
+
+    .slider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.25);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 0;
+    }
+
+    .slider-dot.active {
+      background: var(--color-accent-gold);
+      width: 20px;
+      border-radius: 3px;
+    }
+
+    /* ============================================================
+       BLOQUE 3 - CALL TO ACTION WHATSAPP
+    ============================================================ -->
+    ============================================================ */
+    .cta-section {
+      position: relative;
+      z-index: 1;
+      padding: 8px 24px 40px;
+      text-align: center;
+    }
+
+    .cta-label {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Botón WhatsApp con animación de pulso */
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto 16px;
+      padding: 18px 24px;
+      border-radius: var(--radius-btn);
+      border: none;
+      background: linear-gradient(135deg, var(--color-whatsapp) 0%, var(--color-whatsapp-dark) 100%);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      animation: waPulse 2.5s ease-in-out infinite;
+      transition: var(--transition);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+
+    .btn-whatsapp:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50%       { box-shadow: 0 4px 36px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.08); }
+    }
+
+    /* Ícono WhatsApp SVG inline */
+    .wa-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* Botón secundario de llamada */
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: transparent;
+      color: var(--color-accent-gold);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-call:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--color-accent-gold);
+    }
+
+    /* ============================================================
+       BLOQUE 4 - INFO RÁPIDA
+    ============================================================ -->
+    ============================================================ */
+    .info-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px 40px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .info-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      background: rgba(212, 175, 55, 0.04);
+    }
+
+    .info-card .ic-emoji {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-card .ic-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-accent-gold);
+      margin-bottom: 4px;
+    }
+
+    .info-card .ic-value {
+      font-size: 12.5px;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       BLOQUE 5 - FOOTER CON REDES SOCIALES
+    ============================================================ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 32px 24px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      background: linear-gradient(180deg, transparent, rgba(192,57,43,0.04));
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent-gold);
+      letter-spacing: 2px;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    /* REEMPLAZAR AQUÍ: Botones de redes sociales */
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Facebook */
+    .social-btn.fb:hover {
+      background: rgba(24, 119, 242, 0.15);
+      border-color: rgba(24, 119, 242, 0.5);
+      color: #4f9cf9;
+    }
+
+    /* TikTok */
+    .social-btn.tk:hover {
+      background: rgba(255, 0, 80, 0.1);
+      border-color: rgba(255, 0, 80, 0.4);
+      color: #ff2d55;
+    }
+
+    /* Google Maps */
+    .social-btn.gm:hover {
+      background: rgba(234, 67, 53, 0.1);
+      border-color: rgba(234, 67, 53, 0.4);
+      color: #ea4335;
+    }
+
+    .social-btn svg {
+      flex-shrink: 0;
+    }
+
+    /* Footer legal */
+    .footer-legal {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      opacity: 0.5;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SCROLL-TO-TOP FLOTANTE
+    ============================================================ */
+    #scrollTop {
+      position: fixed;
+      bottom: 24px;
+      right: calc(50% - 240px + 16px);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--color-accent-gold);
+      color: var(--color-bg-primary);
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      transition: var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      font-weight: 700;
+    }
+
+    #scrollTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #scrollTop:hover {
+      background: var(--color-accent-gold-lt);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       ANIMACIONES DE ENTRADA (scroll reveal)
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVE - pantallas más anchas (tablet/desktop)
+    ============================================================ */
+    @media (max-width: 480px) {
+      #scrollTop {
+        right: 16px;
+      }
+    }
+
+    @media (min-width: 481px) {
+      body {
+        background: #050505;
+      }
+    }
+
+    /* Respeto por preferencias de movimiento reducido */
+    @media (prefers-reduced-motion: reduce) {
+      .btn-whatsapp { animation: none; }
+      .logo-ring    { animation: none; }
+      .reveal       { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- ============================================================
+         BLOQUE 1: CABECERA / PERFIL DEL NEGOCIO
+    ============================================================ -->
+    <header class="header">
+
+      <!-- Logo circular -->
+      <div class="logo-wrapper">
+        <div class="logo-ring">
+          <div class="logo-inner">
+            <!-- REEMPLAZAR AQUÍ: Si tienes logo real, usa:
+                 <img src="logo.png" alt="Logo Chifa San Martín" />
+                 Si no, dejamos el emoji representativo: -->
+            <span class="logo-emoji">🥢</span>
+          </div>
+        </div>
+        <!-- REEMPLAZAR AQUÍ: Cambia el texto según estado del negocio -->
+        <span class="badge-open">Abierto</span>
+      </div>
+
+      <!-- Nombre del negocio -->
+      <!-- REEMPLAZAR AQUÍ: Nombre del restaurante en dos líneas -->
+      <h1 class="business-name">
+        <span class="name-main">Chifa San Martín</span>
+        <span class="name-sub">Del Paisita</span>
+      </h1>
+
+      <!-- REEMPLAZAR AQUÍ: Tagline del negocio -->
+      <p class="tagline">"Sabor oriental con alma cajamarquina"</p>
+
+      <!-- Dirección -->
+      <!-- REEMPLAZAR AQUÍ: Dirección física del negocio -->
+      <a
+        href="https://maps.google.com/?q=Av+Via+de+Evitamiento+Norte+163+Cajamarca"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="address-chip"
+        aria-label="Ver dirección en Google Maps"
+      >
+        <span class="pin">📍</span>
+        Av. Vía de Evitamiento Nte. 163, Cajamarca
+      </a>
+
+      <!-- Horarios -->
+      <!-- REEMPLAZAR AQUÍ: Horarios del negocio -->
+      <div class="hours-row">
+        <span class="hours-item">
+          <span class="dot"></span>
+          Lun – Sáb: 11am – 10pm
+        </span>
+        <span class="hours-item">
+          <span class="dot"></span>
+          Dom: 11am – 8pm
+        </span>
+      </div>
+
+    </header>
+
+    <!-- Separador ornamental -->
+    <div class="ornament" aria-hidden="true">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+
+    <!-- ============================================================
+         BLOQUE 2: CARRUSEL INTERACTIVO DE PLATOS
+    ============================================================ -->
+    <section class="slider-section reveal" aria-label="Nuestros platos">
+
+      <div class="slider-header">
+        <p class="section-label">— Menú Destacado —</p>
+        <!-- REEMPLAZAR AQUÍ: Título de la sección de platos -->
+        <h2 class="slider-title">Nuestros Platos Estrella</h2>
+      </div>
+
+      <div class="slider-track-wrapper">
+        <div class="slider-track" id="sliderTrack" role="list" aria-label="Platos del menú">
+
+          <!-- ======================================================
+               REEMPLAZAR AQUÍ: Tarjetas de platos
+               Para agregar/quitar platos, duplica o elimina bloques .dish-card
+               Las imágenes deben estar en la misma carpeta que index.html
+               o usar URL absolutas de internet.
+          ====================================================== -->
+
+          <!-- PLATO 1 -->
+          <div class="dish-card" role="listitem">
+            <div class="dish-img-wrapper">
+              <!-- REEMPLAZAR AQUÍ: src con ruta de imagen real -->
+              <img
+                src="plato1.jpg"
+                alt="Combinado Especial Chifa San Martín"
+                loading="lazy"
+              />
+              <div class="dish-name-overlay">
+                <p class="dish-name">Combinado Especial</p>
+                <span class="dish-tag">El favorito</span>
+              </div>
+            </div>
+            <p class="dish-desc">Chaufa + Wantán frito + preparado agridulce. ¡La combinación perfecta!</p>
+          </div>
+
+          <!-- PLATO 2 -->
+          <div class="dish-card" role="listitem">
+            <div class="dish-img-wrapper">
+              <!-- REEMPLAZAR AQUÍ: src con ruta de imagen real -->
+              <img
+                src="plato2.jpg"
+                alt="Arroz Chaufa Especial"
+                loading="lazy"
+              />
+              <div class="dish-name-overlay">
+                <p class="dish-name">Arroz Chaufa Especial</p>
+                <span class="dish-tag">Tradicional</span>
+              </div>
+            </div>
+            <p class="dish-desc">Arroz frito con huevo, cebolla china, sillao y proteínas a elegir.</p>
+          </div>
+
+          <!-- PLATO 3 -->
+          <div class="dish-card" role="listitem">
+            <div class="dish-img-wrapper">
+              <!-- REEMPLAZAR AQUÍ: src con ruta de imagen real -->
+              <img
+                src="plato3.jpg"
+                alt="Tallarín Saltado"
+                loading="lazy"
+              />
+              <div class="dish-name-overlay">
+                <p class="dish-name">Tallarín Saltado</p>
+                <span class="dish-tag">Wok express</span>
+              </div>
+            </div>
+            <p class="dish-desc">Fideos salteados al wok con vegetales frescos, salsa de soya y proteína.</p>
+          </div>
+
+          <!-- PLATO 4 -->
+          <div class="dish-card" role="listitem">
+            <div class="dish-img-wrapper">
+              <!-- REEMPLAZAR AQUÍ: src con ruta de imagen real -->
+              <img
+                src="plato4.jpg"
+                alt="Pollo en Salsa Agridulce"
+                loading="lazy"
+              />
+              <div class="dish-name-overlay">
+                <p class="dish-name">Pollo Agridulce</p>
+                <span class="dish-tag">Clásico</span>
+              </div>
+            </div>
+            <p class="dish-desc">Trozo de pollo bañado en salsa agridulce con pimiento y piña.</p>
+          </div>
+
+          <!-- PLATO 5 -->
+          <div class="dish-card" role="listitem">
+            <div class="dish-img-wrapper">
+              <!-- REEMPLAZAR AQUÍ: src con ruta de imagen real -->
+              <img
+                src="plato5.jpg"
+                alt="Carne con Verduras al Wok"
+                loading="lazy"
+              />
+              <div class="dish-name-overlay">
+                <p class="dish-name">Carne con Verduras</p>
+                <span class="dish-tag">Wok premium</span>
+              </div>
+            </div>
+            <p class="dish-desc">Láminas de carne salteadas al wok con verduras frescas de temporada.</p>
+          </div>
+
+          <!-- FIN TARJETAS DE PLATOS -->
+
+        </div><!-- /slider-track -->
+      </div><!-- /slider-track-wrapper -->
+
+      <!-- Puntos de navegación -->
+      <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Navegación del carrusel"></div>
+
+    </section><!-- /slider-section -->
+
+
+    <!-- Separador -->
+    <div class="ornament" aria-hidden="true">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+
+    <!-- ============================================================
+         BLOQUE 3: CALL TO ACTION - WHATSAPP
+    ============================================================ -->
+    <section class="cta-section reveal" aria-label="Contacto y pedidos">
+
+      <!-- REEMPLAZAR AQUÍ: Texto introductorio del CTA -->
+      <p class="cta-label">¿Listo para pedir? Escríbenos directamente 👇</p>
+
+      <!-- Botón WhatsApp principal -->
+      <!-- REEMPLAZAR AQUÍ:
+           - href: cambia "51942201341" por el número real con código de país
+           - text=: personaliza el mensaje predefinido (URL-encoded)
+      -->
+      <a
+        href="https://wa.me/51942201341?text=Hola%20Chifa%20San%20Mart%C3%ADn%2C%20vi%20su%20p%C3%A1gina%20web%20y%20deseo%20realizar%20un%20pedido%20por%20favor%20%F0%9F%8D1"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-whatsapp"
+        aria-label="Hacer pedido por WhatsApp"
+      >
+        <!-- Ícono SVG oficial de WhatsApp -->
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        📱 ¡Haz tu pedido por WhatsApp aquí!
+      </a>
+
+      <!-- Botón secundario de llamada -->
+      <!-- REEMPLAZAR AQUÍ: Número de teléfono real -->
+      <a
+        href="tel:+51942201341"
+        class="btn-call"
+        aria-label="Llamar al restaurante"
+      >
+        📞 942 201 341
+      </a>
+
+    </section><!-- /cta-section -->
+
+
+    <!-- ============================================================
+         BLOQUE 4: INFO RÁPIDA DEL NEGOCIO
+    ============================================================ -->
+    <section class="info-section reveal" aria-label="Información del restaurante">
+
+      <!-- REEMPLAZAR AQUÍ: Tarjetas de información del negocio -->
+      <div class="info-grid">
+
+        <div class="info-card">
+          <span class="ic-emoji">🛵</span>
+          <p class="ic-title">Delivery</p>
+          <!-- REEMPLAZAR AQUÍ -->
+          <p class="ic-value">Delivery disponible en Cajamarca</p>
+        </div>
+
+        <div class="info-card">
+          <span class="ic-emoji">🕐</span>
+          <p class="ic-title">Horario</p>
+          <!-- REEMPLAZAR AQUÍ -->
+          <p class="ic-value">Lun–Sáb: 11am–10pm<br/>Dom: 11am–8pm</p>
+        </div>
+
+        <div class="info-card">
+          <span class="ic-emoji">💳</span>
+          <p class="ic-title">Pagos</p>
+          <!-- REEMPLAZAR AQUÍ -->
+          <p class="ic-value">Efectivo, Yape y Plin</p>
+        </div>
+
+        <div class="info-card">
+          <span class="ic-emoji">🍱</span>
+          <p class="ic-title">Para llevar</p>
+          <!-- REEMPLAZAR AQUÍ -->
+          <p class="ic-value">Pedidos para llevar disponibles</p>
+        </div>
+
+      </div>
+
+    </section><!-- /info-section -->
+
+
+    <!-- Separador final -->
+    <div class="ornament" aria-hidden="true">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+
+    <!-- ============================================================
+         BLOQUE 5: FOOTER - REDES SOCIALES
+    ============================================================ -->
+    <footer class="footer reveal" aria-label="Redes sociales y pie de página">
+
+      <!-- REEMPLAZAR AQUÍ: Nombre del negocio en footer -->
+      <p class="footer-brand">✦ CHIFA SAN MARTÍN DEL PAISITA ✦</p>
+
+      <!-- Botones de redes sociales -->
+      <nav class="social-row" aria-label="Redes sociales">
+
+        <!-- REEMPLAZAR AQUÍ: URL de Facebook real -->
+        <a
+          href="https://www.facebook.com/chifasanmartin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn fb"
+          aria-label="Visitar Facebook de Chifa San Martín"
+        >
+          <!-- Ícono Facebook SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Facebook
+        </a>
+
+        <!-- REEMPLAZAR AQUÍ: URL de TikTok real -->
+        <a
+          href="https://www.tiktok.com/@chifasanmartin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn tk"
+          aria-label="Visitar TikTok de Chifa San Martín"
+        >
+          <!-- Ícono TikTok SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/>
+          </svg>
+          TikTok
+        </a>
+
+        <!-- Botón Google Maps -->
+        <!-- REEMPLAZAR AQUÍ: URL de Google Maps del negocio -->
+        <a
+          href="https://maps.google.com/?q=Av+Via+de+Evitamiento+Norte+163+Cajamarca"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-btn gm"
+          aria-label="Ver en Google Maps"
+        >
+          <!-- Ícono Maps SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Maps
+        </a>
+
+      </nav>
+
+      <!-- Pie legal mínimo -->
+      <!-- REEMPLAZAR AQUÍ: Año y nombre del negocio -->
+      <p class="footer-legal">
+        © 2025 Chifa San Martín Del Paisita · Cajamarca, Perú<br />
+        Sitio web informativo · Precios pueden variar
+      </p>
+
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <!-- Botón scroll to top -->
+  <button id="scrollTop" aria-label="Volver al inicio" title="Ir arriba">↑</button>
+
+
+  <!-- ============================================================
+       JAVASCRIPT NATIVO - Sin librerías externas
+  ============================================================ -->
+  <script>
+    /* ============================================================
+       1. CARRUSEL TÁCTIL (Swipable slider)
+          Sin Swiper, sin Slick. Pure vanilla JS.
+    ============================================================ */
+    (function () {
+      const track  = document.getElementById('sliderTrack');
+      const dotsEl = document.getElementById('sliderDots');
+
+      if (!track) return;
+
+      const cards = track.querySelectorAll('.dish-card');
+      const total = cards.length;
+      let activeIdx = 0;
+      let dots = [];
+
+      /* Crear dots */
+      cards.forEach(function (_, i) {
+        const btn = document.createElement('button');
+        btn.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-label', 'Plato ' + (i + 1));
+        btn.addEventListener('click', function () { scrollToCard(i); });
+        dotsEl.appendChild(btn);
+        dots.push(btn);
+      });
+
+      function updateDots(idx) {
+        activeIdx = idx;
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+
+      function scrollToCard(idx) {
+        const card = cards[idx];
+        if (!card) return;
+        const offset = card.offsetLeft - (track.offsetWidth / 2) + (card.offsetWidth / 2);
+        track.scrollTo({ left: offset, behavior: 'smooth' });
+        updateDots(idx);
+      }
+
+      /* Detectar qué tarjeta está más centrada */
+      function getActiveCard() {
+        const center = track.scrollLeft + track.offsetWidth / 2;
+        let closest = 0;
+        let minDist = Infinity;
+        cards.forEach(function (card, i) {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const dist = Math.abs(cardCenter - center);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        return closest;
+      }
+
+      /* Scroll listener */
+      let scrollTimer;
+      track.addEventListener('scroll', function () {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function () {
+          updateDots(getActiveCard());
+        }, 80);
+      }, { passive: true });
+
+      /* ---- Arrastrar con mouse (desktop) ---- */
+      let isDragging = false;
+      let startX, scrollLeft;
+
+      track.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        track.classList.add('is-dragging');
+      });
+
+      document.addEventListener('mouseup', function () {
+        isDragging = false;
+        track.classList.remove('is-dragging');
+      });
+
+      track.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x    = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.2;
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      track.addEventListener('mouseleave', function () {
+        isDragging = false;
+        track.classList.remove('is-dragging');
+      });
+
+      /* Auto-advance suave cada 4 segundos */
+      let autoTimer = setInterval(function () {
+        const next = (activeIdx + 1) % total;
+        scrollToCard(next);
+      }, 4000);
+
+      /* Pausa auto en interacción */
+      track.addEventListener('touchstart', function () {
+        clearInterval(autoTimer);
+      }, { passive: true });
+      track.addEventListener('mousedown', function () {
+        clearInterval(autoTimer);
+      });
+    })();
+
+
+    /* ============================================================
+       2. SCROLL-TO-TOP BUTTON
+    ============================================================ */
+    (function () {
+      const btn = document.getElementById('scrollTop');
+      if (!btn) return;
+
+      window.addEventListener('scroll', function () {
+        btn.classList.toggle('visible', window.scrollY > 300);
+      }, { passive: true });
+
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+
+    /* ============================================================
+       3. SCROLL REVEAL (animaciones de entrada)
+    ============================================================ */
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+
+
+    /* ============================================================
+       4. INDICADOR DE ESTADO (Abierto / Cerrado) automático
+          Basado en horario: Lun-Sáb 11:00-22:00 / Dom 11:00-20:00
+          REEMPLAZAR AQUÍ: Ajusta los horarios según el negocio
+    ============================================================ */
+    (function () {
+      const badge = document.querySelector('.badge-open');
+      if (!badge) return;
+
+      const now  = new Date();
+      const day  = now.getDay();   /* 0=Dom, 1=Lun … 6=Sáb */
+      const hour = now.getHours() + now.getMinutes() / 60;
+
+      /* REEMPLAZAR AQUÍ: horarios de apertura/cierre */
+      const isWeekday = day >= 1 && day <= 6;
+      const isSunday  = day === 0;
+
+      const open   = 11;
+      const closeW = 22;   /* Lun-Sáb cierre */
+      const closeS = 20;   /* Dom cierre */
+
+      let isOpen = false;
+      if (isWeekday && hour >= open && hour < closeW) isOpen = true;
+      if (isSunday  && hour >= open && hour < closeS) isOpen = true;
+
+      if (isOpen) {
+        badge.textContent = '● Abierto';
+        badge.style.background = '#25d366';
+      } else {
+        badge.textContent = '● Cerrado';
+        badge.style.background = '#c0392b';
+      }
+    })();
+
+  </script>
+
+</body>
+</html>
